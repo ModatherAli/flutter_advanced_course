@@ -1,0 +1,15 @@
+name: flutter_course
+packages:
+  - core/**
+  - features/**
+
+commands:
+  bootstrap:
+    environment:
+      sdk: ^3.8.0
+
+    dependencies:
+      dio: ^5.8.0+1
+
+    dev_dependencies:
+      flutter_lints: ^5.0.0
