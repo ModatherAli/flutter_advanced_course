@@ -30,13 +30,23 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  app_settings: 
+    path: features/settings/app_settings
+  datastore:
+    path: core/datastore
   cupertino_icons: ^1.0.8
   melos: ^6.3.3
+
+  get_it: ^8.0.3
+  injectable: ^2.5.0
+  injectable_generator: ^2.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+
+  build_runner: ^2.5.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
