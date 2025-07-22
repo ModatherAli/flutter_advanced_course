@@ -1,3 +1,3 @@
 # flutter_course
 
-flutter create --template=package core/datastore
+flutter create --template=package core/extensions

@@ -10,8 +10,16 @@ environment:
 
 dependencies:
   dio:
+  retrofit: ^4.6.0
+  json_annotation:
+  dartz: ^0.10.1
   data:
     path: ../../../core/data
+  domain:
+    path: ../../../core/domain
+  extensions:
+    path: ../../../core/extensions
+
   flutter:
     sdk: flutter
 
@@ -19,6 +27,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  retrofit_generator: ^10.0.0
+  build_runner: ^2.5.4
+  json_serializable:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
