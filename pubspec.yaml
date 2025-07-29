@@ -28,20 +28,23 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cupertino_icons: ^1.0.8
+  melos: ^6.3.3
+
+  get_it: ^8.0.3
+  injectable: ^2.5.0
+
   flutter:
     sdk: flutter
   app_settings: 
     path: features/settings/app_settings
   datastore:
     path: core/datastore
-  cupertino_icons: ^1.0.8
-  melos: ^6.3.3
-
-  get_it: ^8.0.3
-  injectable: ^2.5.0
-  injectable_generator: ^2.7.0
+  data:
+    path: core/data
 
 dev_dependencies:
+  injectable_generator: ^2.7.0
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
