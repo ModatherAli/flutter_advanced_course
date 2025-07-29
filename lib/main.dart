@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_course/di/injection.dart';
 import 'package:injectable/injectable.dart';
 import 'package:login/login.dart';
+import 'package:login/presentation/login_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomePage(),
+      home: LoginScreen(),
     );
   }
 }
