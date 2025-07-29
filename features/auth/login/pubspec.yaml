@@ -5,31 +5,36 @@ homepage:
 publish_to: none
 
 environment:
-  sdk: ^3.8.0
+  sdk: ^3.5.3
   flutter: ">=1.17.0"
 
 dependencies:
-  dio:
-  retrofit: ^4.6.0
-  json_annotation:
+  injectable: ^2.5.0
+  dio: ^5.8.0+1
   dartz: ^0.10.1
-  data:
-    path: ../../../core/data
+  retrofit: ^4.4.2
+  json_annotation: ^4.9.0
   domain:
     path: ../../../core/domain
+  datastore:
+    path: ../../../core/datastore
+  data:
+    path: ../../../core/data
   extensions:
     path: ../../../core/extensions
-
+  flutter_course:
+    path: ../../..
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  injectable_generator: ^2.7.0
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  retrofit_generator: ^10.0.0
-  build_runner: ^2.5.4
-  json_serializable:
+  retrofit_generator: ^9.1.9
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

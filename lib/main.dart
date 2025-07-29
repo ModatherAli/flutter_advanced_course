@@ -3,6 +3,7 @@ import 'package:datastore/provider/session/session_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_course/di/injection.dart';
 import 'package:injectable/injectable.dart';
+import 'package:login/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,12 @@ class HomePage extends StatelessWidget {
     final appSettingsProvider = getIt<AppSettingsProvider>();
     final sessionProvider = getIt<SessionProvider>();
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          doLogin();
+        },
+        child: const Icon(Icons.run_circle_outlined),
+      ),
       appBar: AppBar(title: const Text('Home Page')),
       body: Center(
         child: Column(

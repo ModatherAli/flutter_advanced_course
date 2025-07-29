@@ -42,6 +42,8 @@ dependencies:
     path: core/datastore
   data:
     path: core/data
+  login:
+    path: features/auth/login
 
 dev_dependencies:
   injectable_generator: ^2.7.0
