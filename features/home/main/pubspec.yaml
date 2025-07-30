@@ -2,14 +2,20 @@ name: main
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none
 
 environment:
   sdk: ^3.8.0
   flutter: ">=1.17.0"
 
 dependencies:
+  flutter_bloc: ^9.1.1
   flutter:
     sdk: flutter
+  app_settings:
+    path: ../../settings/app_settings
+  movies:
+    path: ../../movies
 
 dev_dependencies:
   flutter_test:

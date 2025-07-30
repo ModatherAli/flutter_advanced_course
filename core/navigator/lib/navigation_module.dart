@@ -4,7 +4,8 @@ import 'package:flutter_course/di/injection.dart';
 import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/login_bloc.dart';
 import 'package:login/presentation/login_screen.dart';
-import 'package:main/home_screen.dart';
+import 'package:main/main_bloc.dart';
+import 'package:main/main_screen.dart';
 import 'package:navigator/navigation_bloc.dart';
 import 'package:navigator/navigation_routes.dart';
 import 'package:navigator/navigation_state.dart';
@@ -22,15 +23,15 @@ class NavigationModule extends StatelessWidget {
           // provide navigation bloc
           BlocProvider(create: (_) => LoginBloc(getIt<LoginUseCase>())),
           // provide login bloc
-          // BlocProvider(create: (_) => HomeBloc()), // provide home bloc
+          BlocProvider(create: (_) => MainScreenBloc()), // provide home bloc
         ],
         child: MaterialApp(
           routes: {
-            NavigationRoutes.home: (context) => HomeScreen(),
+            NavigationRoutes.main: (context) => MainScreen(),
             NavigationRoutes.login: (context) => LoginScreen(),
           },
           home: BlocListener<NavigationBloc, NavigationState>(
-              child: LoginScreen(), // initial "default" screen
+              child: MainScreen(), // initial "default" screen
               listener: (context, state) {
                 if (state.route.isNotEmpty) {
                   if (state.navigationType == NavigationType.replace) {
