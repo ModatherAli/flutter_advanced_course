@@ -46,6 +46,8 @@ dependencies:
     path: core/navigator
   login:
     path: features/auth/login
+  movies:
+    path: features/movies
 
 dev_dependencies:
   injectable_generator: ^2.7.0

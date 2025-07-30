@@ -16,6 +16,9 @@ dependencies:
     path: ../../features/home/main
   login:
     path: ../../features/auth/login
+  movies:
+    path: ../../features/movies
+    
   flutter:
     sdk: flutter
 
