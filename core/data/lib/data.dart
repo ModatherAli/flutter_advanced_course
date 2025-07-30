@@ -1,3 +1,5 @@
+library;
+
 import 'package:dio/dio.dart';
 
 /// A Calculator.

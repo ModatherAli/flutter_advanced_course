@@ -22,22 +22,23 @@ const String _dev = 'dev';
 const String _prod = 'prod';
 
 extension GetItInjectableX on _i174.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
     final dataStoreModule = _$DataStoreModule();
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => dataStoreModule.prefs,
       preResolve: true,
     );
-    gh.lazySingleton<_i940.PreferencesProvider>(
-      () => dataStoreModule.providePreferencesProviderImpl(
-        gh<_i460.SharedPreferences>(),
-      ),
-    );
+    gh.lazySingleton<_i940.PreferencesProvider>(() => dataStoreModule
+        .providePreferencesProviderImpl(gh<_i460.SharedPreferences>()));
     gh.factory<_i1014.SessionProvider>(
       () => _i385.DevSessionProviderImpl(gh<_i460.SharedPreferences>()),
       registerFor: {_dev},

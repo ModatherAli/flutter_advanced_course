@@ -6,12 +6,12 @@ part of 'login_service.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _LoginService implements LoginService {
   _LoginService(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??=
-        'https://api.mockfly.dev/mocks/e19191e9-2732-48db-aa29-14cf7caef8d9';
+        'https://api.mockfly.dev/mocks/98322c65-d004-4282-8967-3353907e2c39';
   }
 
   final Dio _dio;

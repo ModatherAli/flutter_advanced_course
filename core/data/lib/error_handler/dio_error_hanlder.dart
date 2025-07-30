@@ -35,10 +35,8 @@ Failure handleError(DioException error) {
       if (error.response != null &&
           error.response?.statusCode != null &&
           error.response?.statusMessage != null) {
-        return Failure(
-          error.response?.statusCode ?? 0,
-          error.response?.statusMessage ?? "",
-        );
+        return Failure(error.response?.statusCode ?? 0,
+            error.response?.statusMessage ?? "");
       } else {
         return DataSource.defaultError.getFailure();
       }

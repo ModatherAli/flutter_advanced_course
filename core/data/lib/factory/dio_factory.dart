@@ -22,7 +22,7 @@ class DioFactory {
       accept: applicationJson,
       authorization: accessToken,
       defaultLanguage: language,
-      clientId: "app_client_id", // todo get app client id
+      clientId: "app_client_id" // todo get app client id
     };
 
     dio.options = BaseOptions(
@@ -35,13 +35,11 @@ class DioFactory {
     // add logger in debug mode only NOT release
 
     if (!kReleaseMode) {
-      dio.interceptors.add(
-        PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseHeader: true,
-        ),
-      );
+      dio.interceptors.add(PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+      ));
     }
 
     return dio;

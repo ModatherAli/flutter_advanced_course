@@ -39,14 +39,12 @@ class LoginInitial extends LoginState {
 // loading state
 class LoginLoading extends LoginState {
   const LoginLoading()
-      : super(stateRendererType: StateRendererType.popupLoadingState);
+      : super(stateRendererType: StateRendererType.fullScreenLoadingState);
 }
 
 // invalid inputs state
 class LoginInvalid extends LoginState {
-  @override
   final String? usernameError;
-  @override
   final String? passwordError;
 
   const LoginInvalid({this.usernameError, this.passwordError})
@@ -64,11 +62,10 @@ class LoginSuccess extends LoginState {
 
 // error state
 class LoginError extends LoginState {
-  @override
   final String? errorMessage;
 
   const LoginError({this.errorMessage})
       : super(
             errorMessage: errorMessage,
-            stateRendererType: StateRendererType.popupErrorState);
+            stateRendererType: StateRendererType.fullScreenErrorState);
 }

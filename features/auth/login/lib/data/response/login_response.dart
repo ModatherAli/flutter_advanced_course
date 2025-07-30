@@ -20,7 +20,7 @@ class LoginResponse {
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseFromJson(json);
 
-  // to json
+// to json
 
   Map<String, dynamic> toJson() => _$LoginResponseToJson(this);
 }

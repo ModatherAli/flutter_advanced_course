@@ -28,7 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
 
     // handle PasswordChanged event
-    on<LoginButtonPressed>((event, emit) async {
+    on<LoginButtonPressed>((event, emit) async{
       // do the logic here
       final usernameError = validateUsername(event.username);
       final passwordError = validateUsername(event.password);
@@ -36,17 +36,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // its safe to call login API
         emit(LoginLoading());
 
-        final loginRequest = LoginRequest(event.username, event.password);
+        final loginRequest = LoginRequest("mina@gmail.com", "123456");
 
         final result = await loginUseCase.execute(loginRequest);
         result.fold((failure) {
           // emit error
           emit(LoginError(errorMessage: failure.message));
+
         }, (loginModel) {
           // emit success
           print("Login Success: ${loginModel.name}");
           emit(LoginSuccess());
         });
+
       } else {
         // show invalid state
         emit(LoginInvalid(

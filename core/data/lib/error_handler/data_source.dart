@@ -11,5 +11,5 @@ enum DataSource {
   sendTimeOut,
   cacheError,
   noInternetConnection,
-  defaultError,
+  defaultError
 }

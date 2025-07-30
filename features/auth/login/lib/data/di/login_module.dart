@@ -17,17 +17,12 @@ abstract class LoginModule {
   }
 
   @lazySingleton
-  LoginRemoteDataSource provideLoginRemoteDataSource(
-    LoginService loginService,
-    NetworkInfo networkInfo,
-  ) {
-    return LoginRemoteDataSourceImpl(loginService, networkInfo);
+  LoginRemoteDataSource provideLoginRemoteDataSource(LoginService loginService, NetworkInfo networkInfo) {
+    return LoginRemoteDataSourceImpl(loginService,networkInfo);
   }
 
   @lazySingleton
-  LoginRepository provideLoginRepository(
-    LoginRemoteDataSource loginRemoteDataSource,
-  ) {
+  LoginRepository provideLoginRepository(LoginRemoteDataSource loginRemoteDataSource) {
     return LoginRepositoryImpl(loginRemoteDataSource);
   }
 

@@ -7,20 +7,14 @@ import '../response/login_response.dart';
 
 part 'login_service.g.dart';
 
-const String baseUrl =
-    "https://api.mockfly.dev/mocks/e19191e9-2732-48db-aa29-14cf7caef8d9";
+const String baseUrl = "https://api.mockfly.dev/mocks/98322c65-d004-4282-8967-3353907e2c39";
 
 @RestApi(baseUrl: baseUrl)
 abstract class LoginService {
-  factory LoginService(
-    Dio dio, {
-    String baseUrl,
-    ParseErrorLogger errorLogger,
-  }) = _LoginService;
+  factory LoginService(Dio dio,
+      {String baseUrl, ParseErrorLogger errorLogger}) = _LoginService;
 
   @POST("/customers/login")
   Future<HttpResponse<LoginResponse>> login(
-    @Field("email") String email,
-    @Field("password") String password,
-  );
+      @Field("email") String email, @Field("password") String password);
 }

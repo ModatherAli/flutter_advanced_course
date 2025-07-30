@@ -20,32 +20,36 @@ class NavigationModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (_) => NavigationBloc()),
-          // provide navigation bloc
-          BlocProvider(create: (_) => LoginBloc(getIt<LoginUseCase>())),
-          // provide login bloc
-          BlocProvider(create: (_) => MainScreenBloc()), // provide home bloc
-          BlocProvider(create: (_) => MoviesBloc(getIt<MoviesUseCase>())),
-        ],
-        child: MaterialApp(
-          routes: {
-            NavigationRoutes.main: (context) => MainScreen(),
-            NavigationRoutes.login: (context) => LoginScreen(),
+      providers: [
+        BlocProvider(create: (_) => NavigationBloc()),
+        // provide navigation bloc
+        BlocProvider(create: (_) => LoginBloc(getIt<LoginUseCase>())),
+        // provide login bloc
+        BlocProvider(create: (_) => MainScreenBloc()),
+        // provide main bloc
+        BlocProvider(create: (_) => MoviesBloc(getIt<MoviesUseCase>())),
+        // provide movies bloc
+      ],
+      child: MaterialApp(
+        routes: {
+          NavigationRoutes.main: (context) => MainScreen(),
+          NavigationRoutes.login: (context) => LoginScreen(),
+        },
+        home: BlocListener<NavigationBloc, NavigationState>(
+          child: MainScreen(), // initial "default" screen
+          listener: (context, state) {
+            if (state.route.isNotEmpty) {
+              if (state.navigationType == NavigationType.replace) {
+                Navigator.of(context).pushReplacementNamed(state.route);
+              } else if (state.navigationType == NavigationType.push) {
+                Navigator.of(context).pushNamed(state.route);
+              } else if (state.navigationType == NavigationType.pop) {
+                Navigator.of(context, rootNavigator: true).pop(true);
+              }
+            }
           },
-          home: BlocListener<NavigationBloc, NavigationState>(
-              child: MainScreen(), // initial "default" screen
-              listener: (context, state) {
-                if (state.route.isNotEmpty) {
-                  if (state.navigationType == NavigationType.replace) {
-                    Navigator.of(context).pushReplacementNamed(state.route);
-                  } else if (state.navigationType == NavigationType.push) {
-                    Navigator.of(context).pushNamed(state.route);
-                  } else if (state.navigationType == NavigationType.pop) {
-                    Navigator.of(context, rootNavigator: true).pop(true);
-                  }
-                }
-              }),
-        ));
+        ),
+      ),
+    );
   }
 }

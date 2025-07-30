@@ -5,11 +5,11 @@ homepage:
 publish_to: none
 
 environment:
-  sdk: ^3.5.3
+  sdk: ^3.8.0
   flutter: ">=1.17.0"
 
 dependencies:
-  flutter_bloc: ^9.1.1
+  flutter_bloc: ^9.1.0
   flutter_course:
     path: ../..
   main:
@@ -18,7 +18,6 @@ dependencies:
     path: ../../features/auth/login
   movies:
     path: ../../features/movies
-    
   flutter:
     sdk: flutter
 

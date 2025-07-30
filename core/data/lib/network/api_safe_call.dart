@@ -6,9 +6,7 @@ import 'package:data/network_info/network_info.dart';
 import 'package:domain/model/failure.dart';
 
 Future<Either<Failure, T>> safeAPiCall<T>(
-  NetworkInfo networkInfo,
-  Future<T> Function() apiCall,
-) async {
+    NetworkInfo networkInfo, Future<T> Function() apiCall) async {
   if (await networkInfo.isConnected) {
     try {
       final response = await apiCall();

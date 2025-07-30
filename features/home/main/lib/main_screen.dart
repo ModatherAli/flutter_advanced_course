@@ -28,19 +28,17 @@ class MainScreenView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: BlocBuilder<MainScreenBloc, MainScreenState>(
-          builder: (context, state) {
-            return Text(state.selectedIndex == 0 ? 'Movies' : 'Settings');
-          },
-        ),
+            builder: (context, state) {
+          return Text(state.selectedIndex == 0 ? 'Movies' : 'Settings');
+        }),
       ),
       body: BlocBuilder<MainScreenBloc, MainScreenState>(
-        builder: (context, state) {
-          return _screens[state.selectedIndex];
-        },
-      ),
+          builder: (context, state) {
+        return _screens[state.selectedIndex];
+      }),
       bottomNavigationBar: BlocBuilder<MainScreenBloc, MainScreenState>(
-        builder: (context, state) {
-          return BottomNavigationBar(
+          builder: (context, state) {
+        return BottomNavigationBar(
             currentIndex: state.selectedIndex,
             onTap: (index) {
               context.read<MainScreenBloc>().add(ChangeTab(index));
@@ -48,13 +46,9 @@ class MainScreenView extends StatelessWidget {
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.movie), label: "Movies"),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: "Settings",
-              ),
-            ],
-          );
-        },
-      ),
+                  icon: Icon(Icons.settings), label: "Settings")
+            ]);
+      }),
     );
   }
 }

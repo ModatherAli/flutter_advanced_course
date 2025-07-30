@@ -9,13 +9,13 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  flutter_bloc: ^9.1.1
-  flutter:
-    sdk: flutter
   app_settings:
     path: ../../settings/app_settings
   movies:
     path: ../../movies
+  flutter_bloc: ^9.1.0
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:

@@ -27,14 +27,17 @@ class MoviesScreen extends StatelessWidget {
     });
 
     return Scaffold(
-      body: BlocBuilder<MoviesBloc, MoviesState>(builder: (context, state) {
-        return Stack(
-          children: [
-            if (state is MoviesSuccess) _buildMainScreenContent(context, state),
-            _buildStateRenderer(context, state)
-          ],
-        );
-      }),
+      body: BlocBuilder<MoviesBloc, MoviesState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              if (state is MoviesSuccess)
+                _buildMainScreenContent(context, state),
+              _buildStateRenderer(context, state),
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -42,15 +45,17 @@ class MoviesScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(16),
       child: GridView.builder(
-          itemCount: state.movies.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: 0.7),
-          itemBuilder: (context, index) {
-            return MovieCard(state.movies[index]);
-          }),
+        itemCount: state.movies.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+          childAspectRatio: 0.7,
+        ),
+        itemBuilder: (context, index) {
+          return MovieCard(state.movies[index]);
+        },
+      ),
     );
   }
 

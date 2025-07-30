@@ -1,8 +1,7 @@
+
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:datastore/di/injection.config.dart';
 
-import 'injection.config.dart';
-
-@injectableInit
-Future<void> configureDataStoreDependencies(GetIt getIt, String? environment) =>
-    getIt.init(environment: environment);
+@InjectableInit()
+Future<void> configureDataStoreDependencies(GetIt getIt, String? environment) => getIt.init(environment: environment);

@@ -10,17 +10,16 @@ import 'package:login/data/service/login_service.dart';
 class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   final LoginService loginService;
   final NetworkInfo networkInfo;
+
   LoginRemoteDataSourceImpl(this.loginService, this.networkInfo);
 
   @override
   Future<Either<Failure, LoginResponse>> login(
-    LoginRequest loginRequest,
-  ) async {
-    return safeAPiCall<LoginResponse>(networkInfo, () async {
-      final response = await loginService.login(
-        loginRequest.email,
-        loginRequest.password,
-      );
+      LoginRequest loginRequest) async {
+    return safeAPiCall(networkInfo, () async {
+      final response =
+          await loginService.login(loginRequest.email, loginRequest.password);
+
       return response.data;
     });
   }

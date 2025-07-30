@@ -19,7 +19,3 @@ extension NonNullInteger on int? {
     }
   }
 }
-
-h() {
-  ''.orEmpty();
-}

@@ -34,20 +34,21 @@ class MoviesLoading extends MoviesState {
 
 // loading state
 class MoviesEmpty extends MoviesState {
-  const MoviesEmpty() : super(stateRendererType: StateRendererType.emptyState);
+  const MoviesEmpty()
+      : super(stateRendererType: StateRendererType.emptyState);
 }
+
 
 // success state
 class MoviesSuccess extends MoviesState {
-  final List<Movie> movies;
+  List<Movie> movies;
 
-  const MoviesSuccess({required this.movies})
+  MoviesSuccess({required this.movies})
       : super(stateRendererType: StateRendererType.contentState);
 }
 
 // error state
 class MoviesError extends MoviesState {
-  @override
   final String? errorMessage;
 
   const MoviesError({this.errorMessage})

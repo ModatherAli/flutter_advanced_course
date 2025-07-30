@@ -19,12 +19,16 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
     final dataModule = _$DataModule();
     gh.lazySingleton<_i131.NetworkInfo>(() => dataModule.provideNetworkInfo());
     gh.factory<String>(
@@ -39,13 +43,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => dataModule.provideLanguage(gh<_i940.PreferencesProvider>()),
       instanceName: 'Language',
     );
-    gh.lazySingleton<_i361.Dio>(
-      () => dataModule.dio(
-        gh<String>(instanceName: 'BaseUrl'),
-        gh<String>(instanceName: 'AccessToken'),
-        gh<String>(instanceName: 'Language'),
-      ),
-    );
+    gh.lazySingleton<_i361.Dio>(() => dataModule.dio(
+          gh<String>(instanceName: 'BaseUrl'),
+          gh<String>(instanceName: 'AccessToken'),
+          gh<String>(instanceName: 'Language'),
+        ));
     return this;
   }
 }

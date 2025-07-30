@@ -1,12 +1,14 @@
-name: flutter_course
+name: flutter_advanced_course_multi_modular_clean_architecture
 packages:
   - core/**
   - features/**
+#  - features/movies
 
-commands:
+command:
   bootstrap:
     environment:
       sdk: ^3.8.0
+      flutter: ">=1.17.0"
 
     dependencies:
       dio: ^5.8.0+1
@@ -14,25 +16,28 @@ commands:
       injectable: ^2.5.0
       json_annotation: ^4.9.0
       pretty_dio_logger: ^1.4.0
-      retrofit: ^4.6.0
+      retrofit: ^4.4.2
       dartz: ^0.10.1
-      connectivity_plus: ^6.1.4
+      connectivity_plus: ^6.1.3
       shared_preferences: ^2.5.3
       uuid: ^4.5.1
-      flutter_bloc: ^9.1.1
+      flutter_bloc: ^9.1.0
       equatable: ^2.0.7
-      
+      hive: ^2.2.3
+      hive_flutter: ^1.1.0
+
     dev_dependencies:
-      injectable_generator: ^2.7.0
+      injectable_generator: ^2.6.2
+      retrofit_generator: ^9.1.9
+      json_serializable: ^6.8.0
+      build_runner: ^2.4.15
       flutter_lints: ^5.0.0
-      json_serializable: ^6.9.5
-      build_runner: ^2.5.4
-      retrofit_generator: ^10.0.0
+      hive_generator: ^2.0.1
 
 scripts:
-  bootstrap: melos bootstrap
   clean: melos clean
   cleanAndBootstrap: melos clean && melos bootstrap
-  format: melos format
   test:
     run: melos exec --concurrency=1 -- flutter test
+  update: flutter pub outdated
+  upgrade: flutter pub upgrade --major-versions
