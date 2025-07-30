@@ -1,8 +1,12 @@
-# melos_managed_dependency_overrides: data,domain,extensions
+# melos_managed_dependency_overrides: data,datastore,domain,extensions,presentation
 dependency_overrides:
   data:
     path: ..\\..\\..\\core\\data
+  datastore:
+    path: ..\\..\\..\\core\\datastore
   domain:
     path: ..\\..\\..\\core\\domain
   extensions:
     path: ..\\..\\..\\core\\extensions
+  presentation:
+    path: ..\\..\\..\\core\\presentation

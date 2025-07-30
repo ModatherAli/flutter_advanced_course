@@ -5,6 +5,8 @@ import 'package:login/domain/usecase/login_usecase.dart';
 import 'package:login/presentation/login_bloc.dart';
 import 'package:login/presentation/login_event.dart';
 import 'package:login/presentation/login_state.dart';
+import 'package:navigator/navigation_bloc.dart';
+import 'package:navigator/navigation_event.dart';
 import 'package:presentation/state_renderer/state_renderer.dart';
 import 'package:presentation/state_renderer/state_renderer_type.dart';
 
@@ -24,6 +26,13 @@ class LoginScreen extends StatelessWidget {
       body: BlocProvider(
         create: (context) => LoginBloc(loginUseCase),
         child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+          if (state is LoginSuccess) {
+            // call the navigation on successful login to navigate to main screen
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              _navigateToHome(context);
+            });
+          }
+
           return Stack(
             children: [
               _buildMainScreenContent(context, state),
@@ -33,6 +42,10 @@ class LoginScreen extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  void _navigateToHome(BuildContext context) {
+    context.read<NavigationBloc>().add(NavigateToHome());
   }
 
   Widget _buildMainScreenContent(BuildContext context, LoginState state) {
@@ -79,8 +92,9 @@ class LoginScreen extends StatelessWidget {
 
     return StateRenderer(
       stateRendererType: state.stateRendererType,
-      message:
-          (state is LoginError) ? state.errorMessage.toString() : "Loading...",
+      message: (state is LoginError)
+          ? state.errorMessage ?? "Loading..."
+          : "Loading...",
       retryActionFunction: () {
         final username = usernameController.text;
         final password = passwordController.text;
