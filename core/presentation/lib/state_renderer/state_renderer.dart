@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:presentation/state_renderer/state_renderer_type.dart';
 
+// ignore: must_be_immutable
 class StateRenderer extends StatelessWidget {
   final StateRendererType stateRendererType;
   final String message;
@@ -10,12 +10,13 @@ class StateRenderer extends StatelessWidget {
   var _isDialogShowing = false;
   final VoidCallback? retryActionFunction;
 
-  StateRenderer(
-      {super.key,
-      required this.stateRendererType,
-      this.message = "Loading...",
-      this.title = "Error",
-      this.retryActionFunction});
+  StateRenderer({
+    super.key,
+    required this.stateRendererType,
+    this.message = "Loading...",
+    this.title = "Error",
+    this.retryActionFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class StateRenderer extends StatelessWidget {
       children: [
         CircularProgressIndicator(),
         SizedBox(height: 10),
-        Text(message)
+        Text(message),
       ],
     );
   }
@@ -77,11 +78,12 @@ class StateRenderer extends StatelessWidget {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
 
-      WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => showDialog(
           context: context,
-          builder: (context) => AlertDialog(
-                content: content,
-              )));
+          builder: (context) => AlertDialog(content: content),
+        ),
+      );
     }
     return Container(); // keep screen content behind the dialog
   }
@@ -90,15 +92,9 @@ class StateRenderer extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
-          Icons.inbox,
-          size: 50,
-          color: Colors.grey,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text("No Data Available")
+        Icon(Icons.inbox, size: 50, color: Colors.grey),
+        SizedBox(height: 10),
+        Text("No Data Available"),
       ],
     );
   }
@@ -117,36 +113,42 @@ class StateRenderer extends StatelessWidget {
         Text(message),
         SizedBox(height: 10),
         if (showRetryButton)
-          ElevatedButton(
-            onPressed: retryActionFunction,
-            child: Text("Retry"),
-          )
+          ElevatedButton(onPressed: retryActionFunction, child: Text("Retry")),
       ],
     );
   }
 
   Widget _showFullScreenContent(Widget content) {
-    return Container(color: Colors.white, child: Center(child: content));
+    return Container(
+      color: Colors.white,
+      child: Center(child: content),
+    );
   }
 
   Widget _showPopupErrorDialog(BuildContext context, Widget content) {
     if (!_isThereCurrentDialogShowing(context)) {
       _isDialogShowing = true;
 
-      WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                content: content,
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        _isDialogDismissed = true;
-                        Navigator.of(context, rootNavigator: true)
-                            .pop(true); // dismiss the dialog
-                      },
-                      child: Text("Close"))
-                ],
-              )));
+            content: content,
+            actions: [
+              TextButton(
+                onPressed: () {
+                  _isDialogDismissed = true;
+                  Navigator.of(
+                    context,
+                    rootNavigator: true,
+                  ).pop(true); // dismiss the dialog
+                },
+                child: Text("Close"),
+              ),
+            ],
+          ),
+        ),
+      );
     }
     return Container(); // keep screen content behind the dialog
   }

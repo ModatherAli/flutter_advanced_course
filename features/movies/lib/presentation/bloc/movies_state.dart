@@ -6,14 +6,19 @@ class MoviesState extends Equatable {
   final String? errorMessage;
   final StateRendererType stateRendererType;
 
-  const MoviesState(
-      {this.errorMessage,
-      this.stateRendererType = StateRendererType.contentState});
+  const MoviesState({
+    this.errorMessage,
+    this.stateRendererType = StateRendererType.contentState,
+  });
 
-  MoviesState copyWith(
-      {String? errorMessage, StateRendererType? stateRenderType}) {
+  MoviesState copyWith({
+    String? errorMessage,
+    StateRendererType? stateRenderType,
+  }) {
     return MoviesState(
-        errorMessage: errorMessage, stateRendererType: stateRendererType);
+      errorMessage: errorMessage,
+      stateRendererType: stateRendererType,
+    );
   }
 
   @override
@@ -23,36 +28,37 @@ class MoviesState extends Equatable {
 // initial state
 class MoviesInitial extends MoviesState {
   const MoviesInitial()
-      : super(stateRendererType: StateRendererType.contentState);
+    : super(stateRendererType: StateRendererType.contentState);
 }
 
 // loading state
 class MoviesLoading extends MoviesState {
   const MoviesLoading()
-      : super(stateRendererType: StateRendererType.fullScreenLoadingState);
+    : super(stateRendererType: StateRendererType.fullScreenLoadingState);
 }
 
 // loading state
 class MoviesEmpty extends MoviesState {
-  const MoviesEmpty()
-      : super(stateRendererType: StateRendererType.emptyState);
+  const MoviesEmpty() : super(stateRendererType: StateRendererType.emptyState);
 }
 
-
 // success state
+// ignore: must_be_immutable
 class MoviesSuccess extends MoviesState {
   List<Movie> movies;
 
   MoviesSuccess({required this.movies})
-      : super(stateRendererType: StateRendererType.contentState);
+    : super(stateRendererType: StateRendererType.contentState);
 }
 
 // error state
 class MoviesError extends MoviesState {
+  @override
   final String? errorMessage;
 
   const MoviesError({this.errorMessage})
-      : super(
-            errorMessage: errorMessage,
-            stateRendererType: StateRendererType.fullScreenErrorState);
+    : super(
+        errorMessage: errorMessage,
+        stateRendererType: StateRendererType.fullScreenErrorState,
+      );
 }
